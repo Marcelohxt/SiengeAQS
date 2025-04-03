@@ -107,7 +107,7 @@ def fix_missing_value(df, col, value):
 
 
 # Drop duplicatas
-def drop_duplicates(df):
+def drop_duplicates(df,):
     old = df.shape[0]
     df.drop_duplicates(inplace = True)
     new = df.shape[0]
@@ -137,6 +137,16 @@ def drop_columns(df, columns):
         print(f"{count} colunas foram descartadas.")
 
 
+
+
+def formatar_valor_brasileiro(coluna): 
+   
+    return (
+        coluna.astype(str)  
+        .str.replace(r'[^\d,]', '', regex=True)  # Remove tudo que não for número ou vírgula
+        .str.replace(',', '.')  # Substitui vírgula decimal por ponto
+        .astype(float)  # Converte para float64
+    )
 
 
 
